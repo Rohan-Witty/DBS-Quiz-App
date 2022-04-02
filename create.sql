@@ -1,3 +1,10 @@
+use quiz;
+-- show full columns from question;
+-- drop table question;
+-- drop table assign;
+-- drop table option_choices;
+-- drop table correct_option;  
+-- drop table student;
 create table student(
 	id char(13),
     `name` varchar(100),
@@ -18,13 +25,7 @@ create table question(
     primary key(qid)
 );
 
--- show full columns from question;
-
--- drop table question;
--- drop table assign;
-
--- drop table option_choices;
-
+drop table option_choices;
 create table option_choices(
 	oid int,
     ostring int,
@@ -35,21 +36,18 @@ create table option_choices(
 
 create table assign(
 	id char(13),
-    oid int,
     qid int,
     attempted_option int,
 	primary key (id, qid),
     foreign key (id) references student(id),
     foreign key (qid) references question(qid),
-    foreign key (attempted_option) references option_choices(oid)
+    foreign key (qid, attempted_option) references option_choices(qid, oid)
 );
-
--- drop table assign;
 
 create table correct_option(
 	qid int,
     oid int,
     primary key (qid),
     foreign key (qid) references question(qid),
-    foreign key (oid) references option_choices(oid)
+    foreign key (qid, oid) references option_choices(qid, oid)
 )
