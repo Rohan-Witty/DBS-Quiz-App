@@ -1,22 +1,21 @@
 use quiz;
--- show full columns from question;
--- drop table question;
--- drop table assign;
--- drop table option_choices;
--- drop table correct_option;  
--- drop table student;
+
+-- drop tables if they exist
+
+drop table if exists correct_option;
+drop table if exists assign;
+drop table if exists option_choices;
+drop table if exists question;
+drop table if exists student;
+
+-- create tables
+
 create table student(
 	id char(13),
     `name` varchar(100),
     `password` varchar(50),
     primary key (id)
 );
-
-insert into student values ('2020A7PS0081P', 'Rohan Srinivasan', 'rohan123');
-insert into student values ('2020A7PS0141P', 'Abhirath Anand', 'abhi123');
-insert into student values ('2020A7PS0021P', 'Samriddha Sinha', 'sammy123');
-insert into student values ('2020A7B30091P', 'Srijan Shashwat', 'srijan123');
-insert into student values ('2020A7PS0013P', 'Kaustab Chaudhary', 'kc123');
 
 create table question(
 	qid int auto_increment,
@@ -25,11 +24,10 @@ create table question(
     primary key(qid)
 );
 
-drop table option_choices;
 create table option_choices(
-	oid int,
-    ostring int,
     qid int,
+	oid int,
+    ostring varchar(1024),
 	primary key (qid, oid),
     foreign key (qid) references question(qid)
 );
