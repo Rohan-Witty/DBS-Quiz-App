@@ -1,13 +1,24 @@
-from tkinter.messagebox import QUESTION
+from operator import concat
 from django.db import models
 
 # Create your models here.
-class Exam(models.Model):
+
+class Question(models.Model):
+    qid = models.IntegerField(primary_key= True)
     qstring = models.CharField(max_length=200)
+    marks = models.IntegerField()
+    def __str__(self):
+        return self.qid
+    class Meta:
+        db_table = "question"
+
+class Option(models.Model):
     oid = models.IntegerField()
     ostring = models.CharField(max_length=200)
+    qid = models.ForeignKey(Question, on_delete=models.CASCADE, db_column="qid")
+    oc_id = models.IntegerField(primary_key=True)
     def __str__(self):
         return self.qstring
     class Meta:
-        db_table = "AssignedQuestions"
+        db_table = "option_choices"
 

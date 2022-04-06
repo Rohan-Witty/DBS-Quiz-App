@@ -18,22 +18,23 @@
 
 </div>
 <div style = "padding-left: 30px;">
-    {% for result in Exam %}
+    {% for question in Question %}
     <table>
         <tr>
             <td>
-                <h3>{{result.id}}) {{ result.qstring }} ?</h3>
+                <h3>{{question.qid}}) {{ question.qstring }} ?</h3>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="radio" name="{{result.id}}" value="{{result.oid}}">{{result.oid}}<br>
-                <input type="radio" name="{{result.id}}" value="{{result.oid}}">{{result.oid}}<br>
-                <input type="radio" name="{{result.id}}" value="{{result.oid}}">{{result.oid}}<br>
-                <input type="radio" name="{{result.id}}" value="{{result.oid}}">{{result.oid}}<br>
+                {% for answer in Option %}
+                    {% comment %} {% if answer.qid == question.qid %} {% endcomment %}
+                        <input type="radio" name="{{question.qid}}" value="{{answer.oid}}">{{answer.ostring}}<br>
+                    {% comment %} {% endif %} {% endcomment %}
+                {% endfor %}
             </td>
+        </tr>
     </table>
-<input type = "radio">
     {% endfor %}
 </div>
 </body>

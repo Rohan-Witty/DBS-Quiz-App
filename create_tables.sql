@@ -25,10 +25,11 @@ create table question(
 );
 
 create table option_choices(
+	oc_id int primary key auto_increment,
     qid int,
 	oid int,
     ostring varchar(1024),
-	primary key (qid, oid),
+	unique qo_pair (qid, oid),
     foreign key (qid) references question(qid)
 );
 
