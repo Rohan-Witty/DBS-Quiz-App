@@ -28,9 +28,9 @@
         <tr>
             <td>
                 {% for answer in Option %}
-                    {% comment %} {% if answer.qid == question.qid %} {% endcomment %}
+                    {% if answer.qid == question.qid %}
                         <input type="radio" name="{{question.qid}}" value="{{answer.oid}}">{{answer.ostring}}<br>
-                    {% comment %} {% endif %} {% endcomment %}
+                    {% endif %}
                 {% endfor %}
             </td>
         </tr>

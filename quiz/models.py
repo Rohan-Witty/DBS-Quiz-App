@@ -15,7 +15,8 @@ class Question(models.Model):
 class Option(models.Model):
     oid = models.IntegerField()
     ostring = models.CharField(max_length=200)
-    qid = models.ForeignKey(Question, on_delete=models.CASCADE, db_column="qid")
+    # qid = models.ForeignKey(Question, on_delete=models.CASCADE, db_column="qid")
+    qid = models.CharField(max_length=200)
     oc_id = models.IntegerField(primary_key=True)
     def __str__(self):
         return self.qstring
