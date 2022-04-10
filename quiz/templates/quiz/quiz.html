@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Quiz</title>
+<title>
+    Quiz
+</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+    // disable radio buttons after submission
     $(document).ready(function(){
         $("#submit").click(function(){
             $(".rb").show();
@@ -11,30 +14,21 @@
 
         });
     });
-    function get_answers()
-    {
-        document.getElementById("UserAnswer").innerHTML = "";
-        var e = document.getElementByName("input");
-        for (i = 0; i<=e.length; i++)
-        {
-            if (e[i].type == "radio" && e[i].checked)
-            {
-                document.getElementByTagName("UserAnswer").innerHTML +="Q " + e[i].name +"The selected answer is: " + e[i].value + "</br>";
-            }
-
-        }
-    }
 </script>
 </head>
 </html>
 <body>
 <div id="main">
 <div id="header">
-<h1>Quiz</h1>
+    <h1>
+        Quiz
+    </h1>
 </div>
 <div id="Welcome">
 <center>
-<h2>Welcome to the Quiz</h2>
+<h2>
+    Welcome to the Quiz
+</h2>
 <p>This is a multiple choice quiz</p>
 </center>
 <hr/>
@@ -63,9 +57,8 @@
     </table>
     {% endfor %}
 </br>
-    <input type="submit" value="Submit" name="submit" id = "submit" onclick = "get_answers();"/>
-    <strong id = "UserAnswer"></strong> 
-    <hr/>
+<input type="submit" value="Submit" name="submit" id = "submit">
+<hr/>
 </div>
 </body>
 </html>
