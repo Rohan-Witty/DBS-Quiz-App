@@ -13,7 +13,10 @@ drop table if exists student;
 create table student(
 	id char(13),
     `name` varchar(100),
-    `password` varchar(50),
+    `password` varchar(128),
+    last_login datetime,
+    admin tinyint(1),
+    active tinyint(1) default 1,
     primary key (id)
 );
 

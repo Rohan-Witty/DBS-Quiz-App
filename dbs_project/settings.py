@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
 ]
-
+AUTH_USER_MODEL = 'users.User' #Changes built-in user model to custom
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -89,7 +90,7 @@ DATABASES = {
     }
 }
 
-
+# AUTH_USER_MODEL = 'quiz.Student'
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -127,3 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# django_project/settings.py
+LOGIN_REDIRECT_URL = "quiz-home"
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
