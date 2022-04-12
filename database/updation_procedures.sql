@@ -1,6 +1,6 @@
 -- update student's password
 delimiter //
-create procedure update_studentpwd(in p_id char(13), in old_pwd varchar(50), in new_pwd varchar(50))
+create procedure update_studentpwd(in p_id char(13), in old_pwd varchar(108), in new_pwd varchar(108))
 begin
 	declare olep varchar(50);
     select password into olep from student where id = p_id;

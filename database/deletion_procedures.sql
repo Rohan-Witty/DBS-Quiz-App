@@ -1,6 +1,11 @@
+drop procedure if exists delete_student;
+drop procedure if exists delete_question;
+drop procedure if exists delete_options;
+drop procedure if exists delete_assign;
+
 -- delete student
 delimiter //
-create procedure delete_student(in s_id int)
+create procedure delete_student(in s_id char(13))
 begin
 	start transaction;
 		delete from assign where id = s_id;
@@ -30,6 +35,16 @@ create procedure delete_options(in q_qid int)
 begin
 	start transaction;
 		delete from option_choices where qid = q_qid;
+	commit;
+end //
+delimiter ;
+
+-- delete assigned questions for a given student
+delimiter //
+create procedure delete_assign(in s_id char(13))
+begin
+	start transaction;
+		delete from assign where id = s_id;
 	commit;
 end //
 delimiter ;

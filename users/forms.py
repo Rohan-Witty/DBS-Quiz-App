@@ -1,7 +1,7 @@
 from django import forms
-from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.db import connection
 
 User = get_user_model()
 
@@ -15,7 +15,7 @@ class UserAdminCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('id',)
+        fields = ('id', 'name')
 
     def clean(self):
         '''
@@ -30,7 +30,7 @@ class UserAdminCreationForm(forms.ModelForm):
 
     def save(self, commit=True):
         # Save the provided password in hashed format
-        user = super().save(commit=False)
+        user = super().save(commit = False)
         user.set_password(self.cleaned_data["password"])
         if commit:
             user.save()
@@ -46,7 +46,7 @@ class UserAdminChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['id', 'password', 'active','admin']
+        fields = ['id', 'password', 'active', 'admin']
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -56,34 +56,35 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    id    = forms.CharField(label='ID', max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput)
-
+    id    = forms.CharField(label = 'ID', max_length = 100)
+    password = forms.CharField(widget = forms.PasswordInput)
 
 
 class RegisterForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+    password1 = forms.CharField(label = 'Password', widget = forms.PasswordInput)
+    password2 = forms.CharField(label = 'Password confirmation', widget = forms.PasswordInput)
 
     class Meta:
         model = User
         fields = ('name', 'id',)
 
     def clean_password2(self):
-        # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
+        # Check that the two password entries match
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
         return password2
 
-    def save(self, commit=True):
+    def save(self, commit = True):
+        user = super(RegisterForm, self).save(commit = False)
+        # use MySQL procedure `insert_studentinfo` to insert user info into `student` table
+        with connection.cursor() as cursor:
+            cursor.callproc('insert_studentinfo', [user.id, user.name])
         # Save the provided password in hashed format
-        user = super(RegisterForm, self).save(commit=True)
         user.set_password(self.cleaned_data["password1"])
-        user.active = True
         if commit:
             user.save()
         return user

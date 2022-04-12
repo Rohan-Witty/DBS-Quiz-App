@@ -15,7 +15,7 @@ create table student(
     `name` varchar(100),
     `password` varchar(128),
     last_login datetime,
-    admin tinyint(1),
+    admin tinyint(1) default 0,
     active tinyint(1) default 1,
     primary key (id)
 );
@@ -37,10 +37,11 @@ create table option_choices(
 );
 
 create table assign(
+	ac_id int primary key auto_increment,
 	id char(13),
     qid int,
     attempted_option int,
-	primary key (id, qid),
+	unique assign_pair (id, qid),
     foreign key (id) references student(id),
     foreign key (qid) references question(qid),
     foreign key (qid, attempted_option) references option_choices(qid, oid)

@@ -1,30 +1,12 @@
-from email import message
 from django.contrib.auth import login, authenticate, get_user_model
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.utils.http import url_has_allowed_host_and_scheme
-# from quiz.mixins import NextUrlMixin, RequestFormAttachMixin
-from django.views.generic import CreateView, FormView
 from django.contrib import messages
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-# class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
-#     form_class = LoginForm
-#     success_url = '/'
-#     template_name = 'accounts/login.html'
-#     default_next = '/'
-
-#     def form_valid(self, form):
-#         next_path = self.get_next_url()
-#         return redirect(next_path)
-
-# class RegisterView(CreateView):
-#     form_class = RegisterForm
-#     template_name = 'accounts/register.html'
-#     success_url = '/login/'
 
 def login_page(request):
     form = LoginForm(request.POST or None)
@@ -45,8 +27,8 @@ def login_page(request):
             except:
                 pass
             url_is_safe = url_has_allowed_host_and_scheme(
-            url=redirect_path,
-            require_https=request.is_secure(),
+                url = redirect_path,
+                require_https = request.is_secure(),
             )
             if url_is_safe and redirect_path:
                 return redirect(redirect_path)

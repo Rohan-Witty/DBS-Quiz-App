@@ -1,64 +1,41 @@
-<!DOCTYPE html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>
-    Quiz
-</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    // disable radio buttons after submission
-    $(document).ready(function(){
-        $("#submit").click(function(){
-            $(".rb").show();
-            $(".rb").attr("disabled", true);
-
-        });
-    });
-</script>
-</head>
-</html>
-<body>
-<div id="main">
-<div id="header">
-    <h1>
-        Quiz
-    </h1>
-</div>
-<div id="Welcome">
-<center>
-<h2>
-    Welcome to the Quiz
-</h2>
-<p>This is a multiple choice quiz</p>
-</center>
-<hr/>
-
-</div>
-<div style = "padding-left: 30px;">
-    {% for question in Question %}
-    <table>
-        <tr>
-                <h3>{{question.qid}}) {{ question.qstring }} ?</h3>
-        </tr>
-                {% for answer in Option %}
-                    {% if answer.qid == question.qid %}
-                        <tr>
-                        <input type="radio" name="{{question.qid}}" value="{{answer.oid}}" class = "rb">{{answer.ostring}}<br>
-                        <tr>
-                        {% endif %}
-                {% endfor %}
-                    {% for co in CorrectOption %}
-                        {% if co.qid == question.qid %}
-                            <tr>
-                            <label id = "correct_option" class = "rb" style = "display: none; color: green">Correct Answer: {{question.correct_answer}}</label>
-                            </tr>
-                            {% endif %}
-                    {% endfor %}
-    </table>
+{% extends "base.html" %}
+{% block content %}
+<form method='post' action=''>
+    {% csrf_token %}
+    {% for q in questions %}
+    <div class="form-group">
+      <label for="question"> {{ forloop.counter }}) {{ q.question.qstring }}</label>
+    </div>
+    <div class="form-check">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option1">
+            <label class="form-check-label" for="gridRadios1">
+                {{ q.options.0.ostring }}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option2">
+            <label class="form-check-label" for="gridRadios2">
+                {{ q.options.1.ostring }}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios1" value="option3">
+            <label class="form-check-label" for="gridRadios1">
+                {{ q.options.2.ostring }}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{q.question}}" id="gridRadios2" value="option4">
+            <label class="form-check-label" for="gridRadios2">
+                {{ q.options.3.ostring }}
+            </label>
+        </div>
+        <br>
+    </div>
     {% endfor %}
-</br>
-<input type="submit" value="Submit" name="submit" id = "submit">
-<hr/>
-</div>
-</body>
-</html>
+    <input id='timer' type='hidden' name="timer" value="">
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock content %}
