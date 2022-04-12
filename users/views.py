@@ -24,14 +24,16 @@ def login_page(request):
     next_post = request.POST.get('next')
     redirect_path = next_ or next_post or None
     if form.is_valid():
-        username  = form.cleaned_data.get("username")
+        username  = form.cleaned_data.get("id")
         password  = form.cleaned_data.get("password")
         user = authenticate(request, username = username, password = password)
+        print(user)
         if user is not None:
             login(request, user)
             url_is_safe = url_has_allowed_host_and_scheme(
                 url = redirect_path,
-                require_https = request.is_secure()
+                require_https = request.is_secure(),
+                allowed_hosts = request.get_host()
             )
             # delete assigned questions to user using MySQL procedure `delete_assign`
             with connection.cursor() as cursor:
