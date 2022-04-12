@@ -6,14 +6,14 @@ delete from assign where true;
 delete from correct_option where true;
 delete from option_choices where true;
 delete from question where true;
-delete from student where true;
+delete from student where id not like 'admin';
 
-insert into student (id, `name`) values
-	('2020A7PS0081P', 'Rohan Srinivasan'),
-	('2020A7PS0141P', 'Abhirath Anand'),
-	('2020A7PS0021P', 'Samriddha Sinha'),
-	('2020A7B30091P', 'Srijan Shashwat'),
-	('2020A7PS0013P', 'Kaustab Chaudhary');
+-- insert into student (id, `name`) values
+-- 	('2020A7PS0081P', 'Rohan Srinivasan'),
+-- 	('2020A7PS0141P', 'Abhirath Anand'),
+-- 	('2020A7PS0021P', 'Samriddha Sinha'),
+-- 	('2020A7B30091P', 'Srijan Shashwat'),
+-- 	('2020A7PS0013P', 'Kaustab Chaudhary');
 
 -- insert into question
 
@@ -71,47 +71,47 @@ insert into option_choices (qid, oid, ostring) values
  
 -- insert into assign
 
-insert into assign (id, qid, attempted_option) values
-	('2020A7PS0141P', 1, 1),
-	('2020A7PS0141P', 2, 1),
-	('2020A7PS0141P', 3, 1),
-	('2020A7PS0141P', 4, 1),
-	('2020A7PS0141P', 5, 1),
-	('2020A7PS0141P', 6, 1),
-	('2020A7PS0141P', 7, 1),
-	('2020A7PS0141P', 8, 1),
-	('2020A7PS0141P', 9, 1),
-	('2020A7PS0141P', 10, 1);
-    -- ('2020A7PS0081P', 1, 2),
--- 	('2020A7PS0081P', 2, 2),
--- 	('2020A7PS0081P', 3, 2),
--- 	('2020A7PS0081P', 4, 2),
--- 	('2020A7PS0081P', 5, 2),
--- 	('2020A7PS0081P', 6, 2),
--- 	('2020A7PS0081P', 7, 2),
--- 	('2020A7PS0081P', 8, 2),
--- 	('2020A7PS0081P', 9, 2),
--- 	('2020A7PS0081P', 10, 2),
---     ('2020A7PS0021P', 11, 3),
--- 	('2020A7PS0021P', 12, 3),
--- 	('2020A7PS0021P', 13, 3),
--- 	('2020A7PS0021P', 14, 3),
--- 	('2020A7PS0021P', 15, 3),
--- 	('2020A7PS0021P', 16, 3),
--- 	('2020A7PS0021P', 17, 3),
--- 	('2020A7PS0021P', 18, 3),
--- 	('2020A7PS0021P', 19, 3),
--- 	('2020A7PS0021P', 20, 3),
---     ('2020A7B30091P', 6, 4),
--- 	('2020A7B30091P', 7, 4),
--- 	('2020A7B30091P', 8, 4),
--- 	('2020A7B30091P', 9, 4),
--- 	('2020A7B30091P', 10, 4),
--- 	('2020A7B30091P', 11, 4),
--- 	('2020A7B30091P', 12, 4),
--- 	('2020A7B30091P', 13, 4),
--- 	('2020A7B30091P', 14, 4),
--- 	('2020A7B30091P', 15, 4);
+-- insert into assign (id, qid, attempted_option) values
+-- 	('2020A7PS0141P', 1, 1),
+-- 	('2020A7PS0141P', 2, 1),
+-- 	('2020A7PS0141P', 3, 1),
+-- 	('2020A7PS0141P', 4, 1),
+-- 	('2020A7PS0141P', 5, 1),
+-- 	('2020A7PS0141P', 6, 1),
+-- 	('2020A7PS0141P', 7, 1),
+-- 	('2020A7PS0141P', 8, 1),
+-- 	('2020A7PS0141P', 9, 1),
+-- 	('2020A7PS0141P', 10, 1);
+--     -- ('2020A7PS0081P', 1, 2),
+-- -- 	('2020A7PS0081P', 2, 2),
+-- -- 	('2020A7PS0081P', 3, 2),
+-- -- 	('2020A7PS0081P', 4, 2),
+-- -- 	('2020A7PS0081P', 5, 2),
+-- -- 	('2020A7PS0081P', 6, 2),
+-- -- 	('2020A7PS0081P', 7, 2),
+-- -- 	('2020A7PS0081P', 8, 2),
+-- -- 	('2020A7PS0081P', 9, 2),
+-- -- 	('2020A7PS0081P', 10, 2),
+-- --     ('2020A7PS0021P', 11, 3),
+-- -- 	('2020A7PS0021P', 12, 3),
+-- -- 	('2020A7PS0021P', 13, 3),
+-- -- 	('2020A7PS0021P', 14, 3),
+-- -- 	('2020A7PS0021P', 15, 3),
+-- -- 	('2020A7PS0021P', 16, 3),
+-- -- 	('2020A7PS0021P', 17, 3),
+-- -- 	('2020A7PS0021P', 18, 3),
+-- -- 	('2020A7PS0021P', 19, 3),
+-- -- 	('2020A7PS0021P', 20, 3),
+-- --     ('2020A7B30091P', 6, 4),
+-- -- 	('2020A7B30091P', 7, 4),
+-- -- 	('2020A7B30091P', 8, 4),
+-- -- 	('2020A7B30091P', 9, 4),
+-- -- 	('2020A7B30091P', 10, 4),
+-- -- 	('2020A7B30091P', 11, 4),
+-- -- 	('2020A7B30091P', 12, 4),
+-- -- 	('2020A7B30091P', 13, 4),
+-- -- 	('2020A7B30091P', 14, 4),
+-- -- 	('2020A7B30091P', 15, 4);
 	
 -- insert into correct_options
 
