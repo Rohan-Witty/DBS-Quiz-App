@@ -9,14 +9,18 @@ class Quiz(forms.Form):
         super(Quiz, self).__init__(*args, **kwargs)
         for question in questions:
             qid = question['question'].qid
-            self.fields['qid_' + str(qid)] = forms.ChoiceField(choices=[(option.oid, option.ostring) for option in question['options']], widget=forms.RadioSelect)
-    
+            self.fields['qid_' + str(qid)] = forms.ChoiceField(
+                choices = [(option.oid, option.ostring) for option in question['options']], 
+                widget = forms.RadioSelect,
+                required = False
+            )
+
     def save(self, user_id):
-        for key, value in self.items():
+        for key, value in self.cleaned_data.items():
             if key.startswith('qid_'):
                 qid = key.split('_')[1]
-                option = Option.objects.get(qid=qid, oid=value)
-                print([user_id, qid, option.oid])
-                with connection.cursor() as cursor:
-                    cursor.callproc('update_assign', [user_id, qid, option.oid])
+                if value != '':
+                    with connection.cursor() as cursor:
+                        cursor.callproc('update_assign', [user_id, qid, value])
+                print([user_id, qid, value])
         return True

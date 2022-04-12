@@ -1,4 +1,24 @@
 {% extends "quiz/base.html" %}
 {% block content %}
     <h1> HOME </h1>
+    <!-- display table with leaderboard -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in leaderboard %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ student.id}}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.total_marks }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
 {% endblock %}
