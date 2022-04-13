@@ -1,141 +1,132 @@
 -- insert into student
 
--- delete from student where true;
-
 delete from assign where true;
 delete from correct_option where true;
 delete from option_choices where true;
 delete from question where true;
-delete from django_admin_log where true;
-delete from student where true;
-
--- insert into student (id, `name`) values
--- 	('2020A7PS0081P', 'Rohan Srinivasan'),
--- 	('2020A7PS0141P', 'Abhirath Anand'),
--- 	('2020A7PS0021P', 'Samriddha Sinha'),
--- 	('2020A7B30091P', 'Srijan Shashwat'),
--- 	('2020A7PS0013P', 'Kaustab Chaudhary');
 
 -- insert into question
-
-insert into question (qid, marks, qstring) values
-	(1, 1, 'q1'),
-	(2, 2, 'q2'),
-	(3, 3, 'q3'),
-	(4, 4, 'q4'),
-	(5, 5, 'q5'),
-	(6, 6, 'q6'),
-	(7, 7, 'q7'),
-	(8, 8, 'q8'),
-	(9, 9, 'q9'),
-	(10, 10, 'q10'),
-	(11, 11, 'q11'),
-	(12, 12, 'q12'),
-	(13, 13, 'q13'),
-	(14, 14, 'q14'),
-	(15, 15, 'q15'),
-	(16, 16, 'q16'),
-	(17, 17, 'q17'),
-	(18, 18, 'q18'),
-	(19, 19, 'q19'),
-	(20, 20, 'q20'),
-	(21, 21, 'q21'),
-	(22, 22, 'q22');
-    
--- select * from question;
+call insert_questioninfo(1, 3, 'q1');
+call insert_questioninfo(2, 3, 'q2');
+call insert_questioninfo(3, 3, 'q3');
+call insert_questioninfo(4, 3, 'q4');
+call insert_questioninfo(5, 3, 'q5');
+call insert_questioninfo(6, 3, 'q6');
+call insert_questioninfo(7, 3, 'q7');
+call insert_questioninfo(8, 3, 'q8');
+call insert_questioninfo(9, 3, 'q9');
+call insert_questioninfo(10, 3, 'q10');
+call insert_questioninfo(11, 3, 'q11');
+call insert_questioninfo(12, 3, 'q12');
+call insert_questioninfo(13, 3, 'q13');
+call insert_questioninfo(14, 3, 'q14');
+call insert_questioninfo(15, 3, 'q15');
+call insert_questioninfo(16, 3, 'q16');
+call insert_questioninfo(17, 3, 'q17');
+call insert_questioninfo(18, 3, 'q18');
+call insert_questioninfo(19, 3, 'q19');
+call insert_questioninfo(20, 3, 'q20');
 
 -- insert into option_choices
+call insert_questionoptions(1, 1, 'o1');
+call insert_questionoptions(1, 2, 'o2');
+call insert_questionoptions(1, 3, 'o3');
+call insert_questionoptions(1, 4, 'o4');
+call insert_questionoptions(2, 1, 'o1');
+call insert_questionoptions(2, 2, 'o2');
+call insert_questionoptions(2, 3, 'o3');
+call insert_questionoptions(2, 4, 'o4');
+call insert_questionoptions(3, 1, 'o1');
+call insert_questionoptions(3, 2, 'o2');
+call insert_questionoptions(3, 3, 'o3');
+call insert_questionoptions(3, 4, 'o4');
+call insert_questionoptions(4, 1, 'o1');
+call insert_questionoptions(4, 2, 'o2');
+call insert_questionoptions(4, 3, 'o3');
+call insert_questionoptions(4, 4, 'o4');
+call insert_questionoptions(5, 1, 'o1');
+call insert_questionoptions(5, 2, 'o2');
+call insert_questionoptions(5, 3, 'o3');
+call insert_questionoptions(5, 4, 'o4');
+call insert_questionoptions(6, 1, 'o1');
+call insert_questionoptions(6, 2, 'o2');
+call insert_questionoptions(6, 3, 'o3');
+call insert_questionoptions(6, 4, 'o4');
+call insert_questionoptions(7, 1, 'o1');
+call insert_questionoptions(7, 2, 'o2');
+call insert_questionoptions(7, 3, 'o3');
+call insert_questionoptions(7, 4, 'o4');
+call insert_questionoptions(8, 1, 'o1');
+call insert_questionoptions(8, 2, 'o2');
+call insert_questionoptions(8, 3, 'o3');
+call insert_questionoptions(8, 4, 'o4');
+call insert_questionoptions(9, 1, 'o1');
+call insert_questionoptions(9, 2, 'o2');
+call insert_questionoptions(9, 3, 'o3');
+call insert_questionoptions(9, 4, 'o4');
+call insert_questionoptions(10, 1, 'o1');
+call insert_questionoptions(10, 2, 'o2');
+call insert_questionoptions(10, 3, 'o3');
+call insert_questionoptions(10, 4, 'o4');
+call insert_questionoptions(11, 1, 'o1');
+call insert_questionoptions(11, 2, 'o2');
+call insert_questionoptions(11, 3, 'o3');
+call insert_questionoptions(11, 4, 'o4');
+call insert_questionoptions(12, 1, 'o1');
+call insert_questionoptions(12, 2, 'o2');
+call insert_questionoptions(12, 3, 'o3');
+call insert_questionoptions(12, 4, 'o4');
+call insert_questionoptions(13, 1, 'o1');
+call insert_questionoptions(13, 2, 'o2');
+call insert_questionoptions(13, 3, 'o3');
+call insert_questionoptions(13, 4, 'o4');
+call insert_questionoptions(14, 1, 'o1');
+call insert_questionoptions(14, 2, 'o2');
+call insert_questionoptions(14, 3, 'o3');
+call insert_questionoptions(14, 4, 'o4');
+call insert_questionoptions(15, 1, 'o1');
+call insert_questionoptions(15, 2, 'o2');
+call insert_questionoptions(15, 3, 'o3');
+call insert_questionoptions(15, 4, 'o4');
+call insert_questionoptions(16, 1, 'o1');
+call insert_questionoptions(16, 2, 'o2');
+call insert_questionoptions(16, 3, 'o3');
+call insert_questionoptions(16, 4, 'o4');
+call insert_questionoptions(17, 1, 'o1');
+call insert_questionoptions(17, 2, 'o2');
+call insert_questionoptions(17, 3, 'o3');
+call insert_questionoptions(17, 4, 'o4');
+call insert_questionoptions(18, 1, 'o1');
+call insert_questionoptions(18, 2, 'o2');
+call insert_questionoptions(18, 3, 'o3');
+call insert_questionoptions(18, 4, 'o4');
+call insert_questionoptions(19, 1, 'o1');
+call insert_questionoptions(19, 2, 'o2');
+call insert_questionoptions(19, 3, 'o3');
+call insert_questionoptions(19, 4, 'o4');
+call insert_questionoptions(20, 1, 'o1');
+call insert_questionoptions(20, 2, 'o2');
+call insert_questionoptions(20, 3, 'o3');
+call insert_questionoptions(20, 4, 'o4');
 
-insert into option_choices (qid, oid, ostring) values
-	(1, 1, "o1"), (1, 2, "o2"), (1, 3, "o3"), (1, 4,"o4"),
-	(2, 1, "o1"), (2, 2, "o2"), (2, 3, "o3"), (2,4,"o4"),
-	(3, 1, "o1"), (3, 2, "o2"), (3, 3, "o3"), (3,4,"o4"),
-	(4, 1, "o1"), (4, 2, "o2"), (4, 3, "o3"), (4,4,"o4"),
-	(5, 1, "o1"), (5, 2, "o2"), (5, 3, "o3"), (5,4,"o4"),
-	(6, 1, "o1"), (6, 2, "o2"), (6, 3, "o3"), (6,4,"o4"),
-	(7, 1, "o1"), (7, 2, "o2"), (7, 3, "o3"), (7,4,"o4"),
-	(8, 1, "o1"), (8, 2, "o2"), (8, 3, "o3"), (8,4,"o4"),
-	(9, 1, "o1"), (9, 2, "o2"), (9, 3, "o3"), (9,4,"o4"),
-	(10, 1, "o1"), (10, 2, "o2"), (10, 3, "o3"), (10,4,"o4"),
-	(11, 1, "o1"), (11, 2, "o2"), (11, 3, "o3"), (11,4,"o4"),
-	(12, 1, "o1"), (12, 2, "o2"), (12, 3, "o3"), (12,4,"o4"),
-	(13, 1, "o1"), (13, 2, "o2"), (13, 3, "o3"), (13,4,"o4"),
-	(14, 1, "o1"), (14, 2, "o2"), (14, 3, "o3"), (14,4,"o4"),
-	(15, 1, "o1"), (15, 2, "o2"), (15, 3, "o3"), (15,4,"o4"),
-	(16, 1, "o1"), (16, 2, "o2"), (16, 3, "o3"), (16,4,"o4"),
-	(17, 1, "o1"), (17, 2, "o2"), (17, 3, "o3"), (17,4,"o4"),
-	(18, 1, "o1"), (18, 2, "o2"), (18, 3, "o3"), (18,4,"o4"),
-	(19, 1, "o1"), (19, 2, "o2"), (19, 3, "o3"), (19,4,"o4"),
-	(20, 1, "o1"), (20, 2, "o2"), (20, 3, "o3"), (20,4,"o4"),
-	(21, 1, "o1"), (21, 2, "o2"), (21, 3, "o3"), (21,4,"o4"),
-	(22, 1, "o1"), (22, 2, "o2"), (22, 3, "o3"), (22,4,"o4");
- 
--- insert into assign
-
--- insert into assign (id, qid, attempted_option) values
--- 	('2020A7PS0141P', 1, 1),
--- 	('2020A7PS0141P', 2, 1),
--- 	('2020A7PS0141P', 3, 1),
--- 	('2020A7PS0141P', 4, 1),
--- 	('2020A7PS0141P', 5, 1),
--- 	('2020A7PS0141P', 6, 1),
--- 	('2020A7PS0141P', 7, 1),
--- 	('2020A7PS0141P', 8, 1),
--- 	('2020A7PS0141P', 9, 1),
--- 	('2020A7PS0141P', 10, 1);
---     -- ('2020A7PS0081P', 1, 2),
--- -- 	('2020A7PS0081P', 2, 2),
--- -- 	('2020A7PS0081P', 3, 2),
--- -- 	('2020A7PS0081P', 4, 2),
--- -- 	('2020A7PS0081P', 5, 2),
--- -- 	('2020A7PS0081P', 6, 2),
--- -- 	('2020A7PS0081P', 7, 2),
--- -- 	('2020A7PS0081P', 8, 2),
--- -- 	('2020A7PS0081P', 9, 2),
--- -- 	('2020A7PS0081P', 10, 2),
--- --     ('2020A7PS0021P', 11, 3),
--- -- 	('2020A7PS0021P', 12, 3),
--- -- 	('2020A7PS0021P', 13, 3),
--- -- 	('2020A7PS0021P', 14, 3),
--- -- 	('2020A7PS0021P', 15, 3),
--- -- 	('2020A7PS0021P', 16, 3),
--- -- 	('2020A7PS0021P', 17, 3),
--- -- 	('2020A7PS0021P', 18, 3),
--- -- 	('2020A7PS0021P', 19, 3),
--- -- 	('2020A7PS0021P', 20, 3),
--- --     ('2020A7B30091P', 6, 4),
--- -- 	('2020A7B30091P', 7, 4),
--- -- 	('2020A7B30091P', 8, 4),
--- -- 	('2020A7B30091P', 9, 4),
--- -- 	('2020A7B30091P', 10, 4),
--- -- 	('2020A7B30091P', 11, 4),
--- -- 	('2020A7B30091P', 12, 4),
--- -- 	('2020A7B30091P', 13, 4),
--- -- 	('2020A7B30091P', 14, 4),
--- -- 	('2020A7B30091P', 15, 4);
-	
 -- insert into correct_options
-
-insert into correct_option values
-	(1, 1),
-	(2, 2),
-	(3, 3),
-	(4, 4),
-	(5, 1),
-	(6, 2),
-	(7, 3),
-	(8, 4),
-	(9, 1),
-	(10, 2),
-	(11, 3),
-	(12, 4),
-	(13, 1),
-	(14, 2),
-	(15, 3),
-	(16, 4),
-	(17, 1),
-	(18, 2),
-	(19, 3),
-	(20, 4),
-	(21, 1),
-	(22, 2);
+call insert_correctoption(1, 1);
+call insert_correctoption(2, 2);
+call insert_correctoption(3, 3);
+call insert_correctoption(4, 4);
+call insert_correctoption(5, 1);
+call insert_correctoption(6, 2);
+call insert_correctoption(7, 3);
+call insert_correctoption(8, 4);
+call insert_correctoption(9, 1);
+call insert_correctoption(10, 2);
+call insert_correctoption(11, 3);
+call insert_correctoption(12, 4);
+call insert_correctoption(13, 1);
+call insert_correctoption(14, 2);
+call insert_correctoption(15, 3);
+call insert_correctoption(16, 4);
+call insert_correctoption(17, 1);
+call insert_correctoption(18, 2);
+call insert_correctoption(19, 3);
+call insert_correctoption(20, 4);

@@ -1,3 +1,7 @@
+drop procedure if exists update_studentpwd;
+drop procedure if exists update_correctoption;
+drop procedure if exists update_assign;
+
 -- update student's password
 delimiter //
 create procedure update_studentpwd(in p_id char(13), in old_pwd varchar(108), in new_pwd varchar(108))
@@ -14,8 +18,6 @@ begin
 	commit;
 end //
 delimiter ;
-
--- call update_pwd('2020A7PS0141P', 'abhi123', 'abhi456');
 
 -- update correct option for a question
 delimiter //

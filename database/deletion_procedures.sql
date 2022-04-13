@@ -27,8 +27,6 @@ begin
 end //
 delimiter ;
 
--- call delete_question(15);
-
 -- delete options for a question
 delimiter //
 create procedure delete_options(in q_qid int)

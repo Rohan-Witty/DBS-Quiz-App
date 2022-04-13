@@ -6,9 +6,10 @@ class Quiz(forms.Form):
     def __init__(self, *args, **kwargs):
         questions = kwargs.pop("questions")
         super(Quiz, self).__init__(*args, **kwargs)
-        for question in questions:
-            qid = question["question"].qid
-            self.fields["qid_" + str(qid)] = forms.ChoiceField(
+        for i, question in enumerate(questions):
+            self.fields[
+                "Q" + str(i + 1) + ") " + question["question"].qstring
+            ] = forms.ChoiceField(
                 choices=[
                     (option.oid, option.ostring) for option in question["options"]
                 ],
@@ -16,14 +17,13 @@ class Quiz(forms.Form):
                 required=False,
             )
 
-    def save(self, user_id):
-        """ "
+    def save(self, user_id, questions):
+        """
         Writes the answers of the user to the database using the MySQL procedure `update_assign`
         """
-        for key, value in self.cleaned_data.items():
-            if key.startswith("qid_"):
-                qid = key.split("_")[1]
-                if value != "":
-                    with connection.cursor() as cursor:
-                        cursor.callproc("update_assign", [user_id, qid, value])
+        for i, (_, oid) in enumerate(self.cleaned_data.items()):
+            qid = questions[i]["question"].qid
+            if oid:
+                with connection.cursor() as cursor:
+                    cursor.callproc("update_assign", [user_id, qid, oid])
         return True

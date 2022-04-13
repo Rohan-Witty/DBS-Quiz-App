@@ -34,7 +34,7 @@ def quiz(request):
         )
     form = Quiz(request.POST or None, questions=questions)
     if form.is_valid():
-        form.save(request.user.id)
+        form.save(request.user.id, questions=questions)
         return redirect("/")
     else:
         print(form.errors)

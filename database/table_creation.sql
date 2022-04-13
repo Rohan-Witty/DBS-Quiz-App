@@ -1,3 +1,5 @@
+CREATE SCHEMA if not exists `quiz` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+
 use quiz;
 
 -- drop tables if they exist
@@ -6,19 +8,20 @@ drop table if exists correct_option;
 drop table if exists assign;
 drop table if exists option_choices;
 drop table if exists question;
--- drop table if exists student;
+drop table if exists django_admin_log;
+drop table if exists student;
 
--- -- create tables
+-- create tables
 
--- create table student(
--- 	id char(13),
---     `name` varchar(100),
---     `password` varchar(128),
---     last_login datetime,
---     admin tinyint(1) default 0,
---     active tinyint(1) default 1,
---     primary key (id)
--- );
+create table student(
+	id char(13),
+    `name` varchar(100),
+    `password` varchar(128),
+    last_login datetime,
+    admin tinyint(1) default 0,
+    active tinyint(1) default 1,
+    primary key (id)
+);
 
 create table question(
 	qid int auto_increment,
@@ -53,4 +56,4 @@ create table correct_option(
     primary key (qid),
     foreign key (qid) references question(qid) on delete cascade,
     foreign key (qid, oid) references option_choices(qid, oid) on delete cascade
-)
+);
