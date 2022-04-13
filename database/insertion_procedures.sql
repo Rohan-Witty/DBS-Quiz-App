@@ -29,7 +29,7 @@ delimiter //
 create procedure insert_questionoptions(in q_qid int, in q_oid int, in ostring varchar(1024))
 begin
 	start transaction;
-		insert into option_choices(qid, marks, qstring) values (q_qid, q_oid, ostring);
+		insert into option_choices(qid, oid, ostring) values (q_qid, q_oid, ostring);
 	commit;
 end //
 delimiter ;
@@ -53,7 +53,3 @@ begin
 	commit;
 end //
 delimiter ;
-
--- delete from student where id like '%78P';
-
--- call insert_studentinfo('2020A7PS078P', 'Shashank Shreedhar Bhatt', 'ssb123');
