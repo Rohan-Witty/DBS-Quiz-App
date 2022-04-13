@@ -6,7 +6,8 @@ delete from assign where true;
 delete from correct_option where true;
 delete from option_choices where true;
 delete from question where true;
-delete from student where id not like 'admin';
+delete from django_admin_log where true;
+delete from student where true;
 
 -- insert into student (id, `name`) values
 -- 	('2020A7PS0081P', 'Rohan Srinivasan'),

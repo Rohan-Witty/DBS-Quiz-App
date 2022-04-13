@@ -10,7 +10,7 @@ class UserAdminCreationForm(forms.ModelForm):
     fields, plus a repeated password.
     """
 
-    password1 = forms.CharField(widget=forms.PasswordInput)
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
 
     class Meta:

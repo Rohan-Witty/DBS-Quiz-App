@@ -8,17 +8,17 @@ from django.contrib.auth.models import (
 
 class UserManager(BaseUserManager):
     def create_user(
-        self, id, password=None, is_staff=False, active=True, is_admin=False
+        self, id, password=None, is_staff=False, active=True, is_admin=False, **kwargs
     ):
         """
         Creates and saves a User with the given email and password.
         """
         if not id:
             raise ValueError("Users must have an ID")
+        if not kwargs.get("name"):
+            raise ValueError("Users must have a name")
 
-        user = self.model(
-            id=id,
-        )
+        user = self.model(id=id, **kwargs,)
 
         user.set_password(password)
         user.save(using=self._db)
@@ -26,14 +26,11 @@ class UserManager(BaseUserManager):
         user.admin = is_admin
         return user
 
-    def create_superuser(self, id, password):
+    def create_superuser(self, id, password, **kwargs):
         """
         Creates and saves a superuser with the given email and password.
         """
-        user = self.create_user(
-            id,
-            password=password,
-        )
+        user = self.create_user(id, password=password, **kwargs,)
         user.admin = True
         user.active = True
         user.save(using=self._db)
@@ -49,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     PASSWORD_FIELD = "password"
     active = models.BooleanField(default=True)
     admin = models.BooleanField(default=False)  # superuser
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["name"]
     objects = UserManager()
 
     def __str__(self):
