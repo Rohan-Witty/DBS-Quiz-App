@@ -1,5 +1,7 @@
 CREATE SCHEMA if not exists `quiz` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 
+CREATE USER 'quiz_admin'@'localhost' IDENTIFIED BY 'quiz_admin123';
+
 use quiz;
 
 -- drop tables if they exist
